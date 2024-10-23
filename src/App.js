@@ -19,7 +19,8 @@ function App() {
         const data = await response.json();
         setEmployees(data);
       } catch (error) {
-        setError('Failed to fetch data'); // Set error message
+        setError('Failed to fetch data');
+        window.alert('Failed to fetch data'); // Alert for error handling
       }
     };
 
@@ -53,9 +54,6 @@ function App() {
     <div className="App">
       <h1>Employee List</h1>
 
-      {/* Display error message if it exists */}
-      {error && <div style={{ color: 'red', margin: '10px 0' }}>{error}</div>}
-
       <table border="1" cellPadding="10" cellSpacing="0">
         <thead>
           <tr>
@@ -78,13 +76,13 @@ function App() {
       </table>
 
       <div className="pagination">
-        <button onClick={handlePrevious} enable={currentPage === 1}>
+        <button onClick={handlePrevious} disabled={currentPage === 1}>
           Previous
         </button>
         <span>
           Page {currentPage} of {totalPages}
         </span>
-        <button onClick={handleNext} enable={currentPage === totalPages}>
+        <button onClick={handleNext} disabled={currentPage === totalPages}>
           Next
         </button>
       </div>
