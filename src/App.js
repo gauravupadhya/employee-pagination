@@ -19,8 +19,7 @@ function App() {
         const data = await response.json();
         setEmployees(data);
       } catch (error) {
-        setError('Failed to fetch data');
-        window.alert('Failed to fetch data'); // Use alert to meet test case requirements
+        setError('Failed to fetch data'); // Set error message
       }
     };
 
@@ -53,6 +52,9 @@ function App() {
   return (
     <div className="App">
       <h1>Employee List</h1>
+
+      {/* Display error message if it exists */}
+      {error && <div style={{ color: 'red', margin: '10px 0' }}>{error}</div>}
 
       <table border="1" cellPadding="10" cellSpacing="0">
         <thead>
