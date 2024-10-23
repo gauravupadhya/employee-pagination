@@ -1,0 +1,82 @@
+/* Resetting margins and padding */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Full height to ensure centering works */
+  background-color: black; /* Background color set to black */
+  color: white; /* White text for readability */
+  font-family: Arial, sans-serif;
+}
+
+/* Main container styling */
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Full screen height */
+  width: 90%; /* Ensure content fits within the viewport */
+  max-width: 1200px;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+h1 {
+  margin-bottom: 20px; /* Space below the title */
+}
+
+/* Table styling */
+table {
+  width: 100%; /* Make table fit the container */
+  border-collapse: collapse; /* Remove double borders */
+  margin-bottom: 20px;
+  background-color: #333; /* Dark background for the table */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Optional: Add slight shadow */
+}
+
+/* Header row styling */
+thead {
+  background-color: green; /* Green header */
+  color: white;
+}
+
+/* Table cells */
+th, td {
+  padding: 12px;
+  border: 1px solid #777; /* Add solid borders between cells */
+  text-align: left;
+}
+
+/* Row hover effect */
+tbody tr:hover {
+  background-color: #444; /* Highlight rows on hover */
+}
+
+/* Button styling */
+button {
+  background-color: green; /* Green button */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover:not(:disabled) {
+  background-color: #006400; /* Darker green on hover */
+}
+
+button:disabled {
+  background-color: #777; /* Disabled button */
+  cursor: not-allowed;
+}
+
+/* Pagination container styling */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
