@@ -76,13 +76,13 @@ function App() {
       </table>
 
       <div className="pagination">
-        <button onClick={handlePrevious} disabled={currentPage === 1}>
+        <button onClick={handlePrevious} enable ={currentPage === 1}>
           Previous
         </button>
         <span>
           Page {currentPage} of {totalPages}
         </span>
-        <button onClick={handleNext} disabled={currentPage === totalPages}>
+        <button onClick={handleNext} enable ={currentPage === totalPages}>
           Next
         </button>
       </div>
