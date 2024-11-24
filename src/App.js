@@ -71,14 +71,23 @@ const PaginationApp = () => {
         </tbody>
       </table>
       <div className="pagination">
-        <button onClick={handlePrevious} disabled={currentPage === 1}>
+        <button
+          onClick={handlePrevious}
+          disabled={currentPage === 1}
+          className={currentPage === 1 ? 'disabled' : ''}
+        >
           Previous
         </button>
-        <button onClick={handleNext} disabled={currentPage === totalPages}>
+        <button
+          onClick={handleNext}
+          disabled={currentPage === totalPages}
+          className={currentPage === totalPages ? 'disabled' : ''}
+        >
           Next
         </button>
+        {/* Display current page number */}
         <p>
-          Page {currentPage} of {totalPages}
+          Current Page: <span>{currentPage}</span>
         </p>
       </div>
     </div>

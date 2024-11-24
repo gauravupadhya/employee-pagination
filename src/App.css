@@ -1,4 +1,4 @@
-/* General styles for the application */
+
 body {
   font-family: Arial, sans-serif;
   margin: 20px;
@@ -6,7 +6,6 @@ body {
   color: #333;
 }
 
-/* Container for the pagination app */
 div {
   display: flex;
   flex-direction: column;
@@ -14,7 +13,6 @@ div {
   width: 100%;
 }
 
-/* Table styling */
 table {
   border-collapse: collapse;
   width: 100%;
@@ -33,18 +31,12 @@ td {
 th {
   background-color: #90ee90;
   color: #333;
-  text-transform: uppercase;
 }
 
 tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
-tr:hover {
-  background-color: #f1f1f1;
-}
-
-/* Button styling */
 button {
   padding: 10px 15px;
   margin: 5px;
@@ -59,29 +51,9 @@ button {
 
 button:disabled {
   background-color: #ccc;
-  cursor: pointer;
-  background-color: #007bff;
-  color: white;
-  transition: background-color 0.3s;
+  cursor: not-allowed;
 }
 
-
-/* button.disabled {
-  background-color: #e0e0e0;
-  color: #666;
-} */
-
-/* Page info styling */
-p {
-  margin-top: 10px;
+.pagination p {
   font-weight: bold;
-  color: #555;
-}
-
-/* Pagination controls styling */
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
 }
