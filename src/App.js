@@ -6,8 +6,9 @@ const PaginationApp = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [error, setError] = useState(null);
 
-  const rowsPerPage = 10; // Rows per page
+  const rowsPerPage = 10;
 
+  // Fetch data on component mount
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -25,9 +26,10 @@ const PaginationApp = () => {
     fetchData();
   }, []);
 
+  // Calculate total number of pages
   const totalPages = Math.ceil(data.length / rowsPerPage);
 
-  // Get current page data
+  // Get the current page's data
   const currentData = data.slice(
     (currentPage - 1) * rowsPerPage,
     currentPage * rowsPerPage
@@ -71,6 +73,7 @@ const PaginationApp = () => {
         </tbody>
       </table>
       <div className="pagination">
+        {/* Previous Button */}
         <button
           onClick={handlePrevious}
           disabled={currentPage === 1}
@@ -78,6 +81,8 @@ const PaginationApp = () => {
         >
           Previous
         </button>
+
+        {/* Next Button */}
         <button
           onClick={handleNext}
           disabled={currentPage === totalPages}
@@ -85,7 +90,8 @@ const PaginationApp = () => {
         >
           Next
         </button>
-        {/* Display current page number */}
+
+        {/* Display Current Page */}
         <p>
           Current Page: <span>{currentPage}</span>
         </p>
