@@ -11,12 +11,13 @@ div {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 /* Table styling */
 table {
   border-collapse: collapse;
-  width: 300%;
+  width: 100%;
   margin: 20px 0;
   background-color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -58,15 +59,29 @@ button {
 
 button:disabled {
   background-color: #ccc;
-  cursor: not-allowed;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  transition: background-color 0.3s;
 }
 
-button:hover:not(:disabled) {
-  background-color: #0056b3;
-}
 
+/* button.disabled {
+  background-color: #e0e0e0;
+  color: #666;
+} */
+
+/* Page info styling */
 p {
   margin-top: 10px;
   font-weight: bold;
   color: #555;
+}
+
+/* Pagination controls styling */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
