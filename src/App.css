@@ -1,12 +1,13 @@
 /* General styles for the app */
 body {
   font-family: Arial, sans-serif;
-  margin: 20px;
   background-color: #f9f9f9;
   color: #333;
+  margin: 20px;
+  padding: 0;
 }
 
-/* Wrapper styling */
+/* Center container */
 div {
   display: flex;
   flex-direction: column;
@@ -17,7 +18,7 @@ div {
 /* Table styling */
 table {
   border-collapse: collapse;
-  width: 100%;
+  width: 90%;
   margin: 20px 0;
   background-color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -56,14 +57,14 @@ button {
   transition: background-color 0.3s;
 }
 
-/* button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-} */
+button:hover {
+  background-color: #0056b3;
+}
 
 /* Current Page Indicator */
 .pagination p {
   font-weight: bold;
+  margin: 0 10px;
 }
 
 /* Pagination Controls */

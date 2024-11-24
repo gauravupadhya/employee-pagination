@@ -1,35 +1,35 @@
-import React, { useState, useEffect } from 'react';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import "./style.css";
 
 const PaginationApp = () => {
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [error, setError] = useState(null);
 
-  const rowsPerPage = 10;
+  const rowsPerPage = 10; // Number of rows to show per page
 
   // Fetch data on component mount
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          'https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json'
+          "https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json"
         );
-        if (!response.ok) throw new Error('Failed to fetch data');
+        if (!response.ok) throw new Error("Failed to fetch data");
         const result = await response.json();
         setData(result);
-      } catch (error) {
-        setError('failed to fetch data');
-        alert('failed to fetch data');
+      } catch (err) {
+        setError("failed to fetch data");
+        alert("failed to fetch data");
       }
     };
     fetchData();
   }, []);
 
-  // Calculate total number of pages
+  // Total pages calculation
   const totalPages = Math.ceil(data.length / rowsPerPage);
 
-  // Get the current page's data
+  // Get the current page data
   const currentData = data.slice(
     (currentPage - 1) * rowsPerPage,
     currentPage * rowsPerPage
@@ -38,14 +38,14 @@ const PaginationApp = () => {
   // Handle "Previous" button click
   const handlePrevious = () => {
     if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
+      setCurrentPage((prevPage) => prevPage - 1);
     }
   };
 
   // Handle "Next" button click
   const handleNext = () => {
     if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
+      setCurrentPage((prevPage) => prevPage + 1);
     }
   };
 
@@ -73,28 +73,11 @@ const PaginationApp = () => {
         </tbody>
       </table>
       <div className="pagination">
-        {/* Previous Button */}
-        <button
-          onClick={handlePrevious}
-          disabled={currentPage === 1}
-          className={currentPage === 1 ? 'disabled' : ''}
-        >
-          Previous
-        </button>
-
-        {/* Next Button */}
-        <button
-          onClick={handleNext}
-          disabled={currentPage === totalPages}
-          className={currentPage === totalPages ? 'disabled' : ''}
-        >
-          Next
-        </button>
-
-        {/* Display Current Page */}
+        <button onClick={handlePrevious}>Previous</button>
         <p>
-          Current Page: <span>{currentPage}</span>
+          Page <span>{currentPage}</span> of {totalPages}
         </p>
+        <button onClick={handleNext}>Next</button>
       </div>
     </div>
   );
