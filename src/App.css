@@ -1,82 +1,72 @@
-/* Resetting margins and padding */
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%; /* Full height to ensure centering works */
-  background-color: black; /* Background color set to black */
-  color: white; /* White text for readability */
+/* General styles for the application */
+body {
   font-family: Arial, sans-serif;
+  margin: 20px;
+  background-color: #f9f9f9;
+  color: #333;
 }
 
-/* Main container styling */
-.App {
+/* Container for the pagination app */
+div {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  min-height: 100vh; /* Full screen height */
-  width: 90%; /* Ensure content fits within the viewport */
-  max-width: 1200px;
-  box-sizing: border-box;
-  padding: 20px;
-}
-
-h1 {
-  margin-bottom: 20px; /* Space below the title */
 }
 
 /* Table styling */
 table {
-  width: 100%; /* Make table fit the container */
-  border-collapse: collapse; /* Remove double borders */
-  margin-bottom: 20px;
-  background-color: #333; /* Dark background for the table */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Optional: Add slight shadow */
+  border-collapse: collapse;
+  width: 300%;
+  margin: 20px 0;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Header row styling */
-thead {
-  background-color: green; /* Green header */
-  color: white;
-}
-
-/* Table cells */
-th, td {
-  padding: 12px;
-  border: 1px solid #777; /* Add solid borders between cells */
+th,
+td {
   text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
 }
 
-/* Row hover effect */
-tbody tr:hover {
-  background-color: #444; /* Highlight rows on hover */
+th {
+  background-color: #90ee90;
+  color: #333;
+  text-transform: uppercase;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
 }
 
 /* Button styling */
 button {
-  background-color: green; /* Green button */
-  color: white;
+  padding: 10px 15px;
+  margin: 5px;
   border: none;
   border-radius: 4px;
-  padding: 10px 20px;
-  margin: 5px;
+  font-size: 14px;
   cursor: pointer;
+  background-color: #007bff;
+  color: white;
   transition: background-color 0.3s;
 }
 
-button:hover:not(:disabled) {
-  background-color: #006400; /* Darker green on hover */
-}
-
 button:disabled {
-  background-color: #777; /* Disabled button */
+  background-color: #ccc;
   cursor: not-allowed;
 }
 
-/* Pagination container styling */
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
+button:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+p {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #555;
 }

@@ -1,60 +1,49 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import './App.css';
 
-// Pagination constants
-const ROWS_PER_PAGE = 10;
+const PaginationApp = () => {
+  const [data, setData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [error, setError] = useState(null);
 
-function App() {
-  const [employees, setEmployees] = useState([]); // Store employee data
-  const [currentPage, setCurrentPage] = useState(1); // Track current page
-  const [error, setError] = useState(null); // Track API errors
+  const rowsPerPage = 10;
 
-  // Fetch employee data on initial render
   useEffect(() => {
-    const fetchEmployees = async () => {
+    const fetchData = async () => {
       try {
         const response = await fetch(
           'https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json'
         );
-        if (!response.ok) throw new Error('Network response was not ok');
-        const data = await response.json();
-        setEmployees(data);
+        if (!response.ok) throw new Error('Fetch failed');
+        const result = await response.json();
+        setData(result);
       } catch (error) {
-        setError('Failed to fetch data');
-        window.alert('Failed to fetch data'); // Alert for error handling
+        setError('failed to fetch data');
+        alert('failed to fetch data');
       }
     };
-
-    fetchEmployees();
+    fetchData();
   }, []);
 
-  // Calculate total pages
-  const totalPages = Math.ceil(employees.length / ROWS_PER_PAGE);
+  const totalPages = Math.ceil(data.length / rowsPerPage);
 
-  // Calculate the data to display for the current page
-  const currentData = employees.slice(
-    (currentPage - 1) * ROWS_PER_PAGE,
-    currentPage * ROWS_PER_PAGE
+  const currentData = data.slice(
+    (currentPage - 1) * rowsPerPage,
+    currentPage * rowsPerPage
   );
 
-  // Handle Previous button click
   const handlePrevious = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
+    if (currentPage > 1) setCurrentPage((prev) => prev - 1);
   };
 
-  // Handle Next button click
   const handleNext = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
+    if (currentPage < totalPages) setCurrentPage((prev) => prev + 1);
   };
 
   return (
-    <div className="App">
-      <h1>Employee List</h1>
-
-      <table border="1" cellPadding="10" cellSpacing="0">
+    <div>
+      {error && <p>{error}</p>}
+      <table>
         <thead>
           <tr>
             <th>ID</th>
@@ -64,30 +53,29 @@ function App() {
           </tr>
         </thead>
         <tbody>
-          {currentData.map((employee) => (
-            <tr key={employee.id}>
-              <td>{employee.id}</td>
-              <td>{employee.name}</td>
-              <td>{employee.email}</td>
-              <td>{employee.role}</td>
+          {currentData.map((item) => (
+            <tr key={item.id}>
+              <td>{item.id}</td>
+              <td>{item.name}</td>
+              <td>{item.email}</td>
+              <td>{item.role}</td>
             </tr>
           ))}
         </tbody>
       </table>
-
-      <div className="pagination">
-        <button onClick={handlePrevious} enable ={currentPage === 1}>
+      <div>
+        <button onClick={handlePrevious} disabled={currentPage === 1}>
           Previous
         </button>
-        <span>
-          Page {currentPage} of {totalPages}
-        </span>
-        <button onClick={handleNext} enable ={currentPage === totalPages}>
+        <button onClick={handleNext} disabled={currentPage === totalPages}>
           Next
         </button>
+        <p>
+          Page {currentPage} of {totalPages}
+        </p>
       </div>
     </div>
   );
-}
+};
 
-export default App;
+export default PaginationApp;
